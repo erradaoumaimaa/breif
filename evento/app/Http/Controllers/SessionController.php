@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\RoleHelper;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -23,7 +24,7 @@ class SessionController extends Controller
 
         session()->regenerate();
 
-        $route = auth()->user()->role;
+        $route = RoleHelper::redirect();
 
         return redirect()->route($route);
     }
